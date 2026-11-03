@@ -1,0 +1,5 @@
+MEMBER C — ADMIN DASHBOARD & USER LIFECYCLE
+Implement/review Admin user management: list users, create user, change role, lock/unlock, delete with safeguards, protect last active Admin, audit trail latest 50, KPI counts.
+Files supplied: server.py, app.js, style.css, rbac.py, milestone2_patch.py.
+COORDINATION: server.py is shared with Member A and patch/RBAC with B. Start after A's auth PR is merged. Coordinate API route changes with B; coordinate UI changes with D (avoid simultaneous edits to app.js/style.css).
+Deliver: test results for add/promote/demote/lock/unlock/delete protections and screenshots. Do not include secrets or database files.
