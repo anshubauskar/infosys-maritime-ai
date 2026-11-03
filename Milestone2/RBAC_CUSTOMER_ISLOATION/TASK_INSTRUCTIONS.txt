@@ -1,5 +1,0 @@
-MEMBER B — RBAC & CUSTOMER DATA ISOLATION
-Implement/review five roles: Admin, Operations Manager, Freight Broker, Auditor, Customer; server-side permission checks including direct API/page access; customer-only record scoping; locked-user access enforcement.
-Files supplied: rbac.py, milestone2_patch.py, db.py, server.py (context/reference).
-Do not edit server.py unless coordinated with A/C. Main ownership is rbac.py and milestone2_patch.py.
-Deliver: role permission matrix, tests proving allowed actions and 403 denials, customer isolation tests, screenshots. Do not include secrets or database files.
