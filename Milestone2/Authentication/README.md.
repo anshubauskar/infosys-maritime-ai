@@ -1,0 +1,17 @@
+Authentication Module
+
+This folder contains the authentication-related files developed for Milestone 2 of the Infosys Maritime AI project.
+
+Module Overview
+
+The Authentication module manages user authentication and access security.
+
+Contents
+
+The source files and supporting documentation for the authentication implementation are maintained in this folder.
+
+Purpose
+
+- Organize authentication-related code.
+- Support secure user login and access management.
+- Maintain authentication implementation files for Milestone 2.
