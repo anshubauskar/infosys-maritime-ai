@@ -1,0 +1,64 @@
+FREIGHTQUOTE AI - AI COPILOT ONLY
+IMPLEMENTATION INSTRUCTIONS
+==================================
+
+WHAT THE COPILOT DOES
+The AI Copilot answers plain-English freight questions with exact answers
+from SQL queries. It never invents numbers and does not use a language model.
+
+
+1. FILES
+  analyst.py        Intent handlers (customs, chokepoints, lane planning,
+                    greetings, summaries)
+  qa.py             Turns a question into a read-only SQL query over whitelisted tables
+  intent_router.py  Chooses the handler and formats markdown tables
+  README.md         Overview and rules
+
+
+2. INSTALL
+  a. Back up the notebook.
+  b. Copy analyst.py, qa.py and intent_router.py into /content/app/
+     (or replace notebook cells 3, 11 and 15, keeping their %%writefile lines).
+  c. Run Runtime -> Run all.
+  d. Check the server log for "analyst failed". If present, fix that module first.
+
+
+3. TEST
+  Open the AI Copilot page and try:
+    "hi"                                          -> greeting
+    "how many shipments are on customs hold?"     -> count + SQL shown
+    "which ports are most congested?"             -> ranked table
+    "top 5 ports by congestion index"             -> 5 rows
+    "what is the weather in a place not in data?" -> polite message, no error
+
+
+4. HOW A QUESTION IS ANSWERED
+  1. analyst.py checks intents in order (greeting, customs, chokepoint,
+     lane planning, summaries). The first match wins.
+  2. If none match, qa.py finds a table, column, aggregate word and filters.
+  3. The query is built from the whitelist, with values bound as parameters.
+  4. Each handler returns {"answer", "df", "sql", "extra"}.
+  5. No match -> polite reply. Never guess.
+
+
+5. RULES
+  R1. Every number comes from a database query.
+  R2. SELECT only. No INSERT, UPDATE, DELETE or DROP.
+  R3. Use ? placeholders for every user value. Never join user text into SQL.
+  R4. Table and column names come only from the whitelist in qa.py.
+  R5. Role filtering: Customers see only rows for their own customer_id.
+  R6. Every handler returns the four keys in step 4.
+  R7. Show the SQL with each answer.
+
+
+6. ADD A NEW QUESTION
+  Option A (specific question): write a handler in analyst.py that returns
+    the four keys, and add a check for it in _answer() before the generic query.
+  Option B (simple count or list): add a synonym to the table's keyword list in qa.py.
+  Then test at least three wordings and add the question to README.md.
+
+
+7. STILL TO DO
+  - Role filtering (rule R5) is not yet implemented.
+  - The 15 new questions required by Milestone 2 are not yet added.
+  - "Suggest three valid questions" reply for out-of-scope questions is not yet built.
