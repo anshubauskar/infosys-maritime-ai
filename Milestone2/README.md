@@ -4,6 +4,15 @@
 
 FreightQuote AI is a freight operations demonstration application. The project combines a FastAPI backend, SQLite data store, browser-based interface, role-based access control (RBAC), and an AI Copilot that is intended to answer operational questions from database evidence.
 
+## Team Members:
+
+   | Name | Work Done |
+   |---|---|
+   | `Chetana P Kulkarni` | Login and Security |
+   | `Ankit Kumar` | Roles and Admin Backend |
+   | `Venu Kumar P J` | Copilot |
+   | `Anshu Bauskar` | Frontend, Design and Database / Code Merge |
+
 > **Submission note:** This repository contains the Colab notebook used to create and run the application. Verify each feature in the running app and add only genuine screenshots/test results before final submission. This is an academic demo, not a production deployment.
 
 ## Repository contents
