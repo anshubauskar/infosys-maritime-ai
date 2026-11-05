@@ -14,7 +14,7 @@ The project, named **FreightQuote AI**, brings together freight-related tools an
 
 | Milestone | Description | Repository |
 |---|---|---|
-| Milestone 1 | Initial project development and foundational implementation | [View Milestone 1](./Milestone%201/) |
+| Milestone 1 | Initial project development and foundational implementation | [View Milestone 1](./Milestone1/) |
 | Milestone 2 | Application integration, authentication, RBAC, Admin Dashboard and AI Copilot | [View Milestone 2](./Milestone%202/) |
 
 Each milestone folder contains its respective source code, notebooks and documentation.
