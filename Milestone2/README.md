@@ -1,74 +1,164 @@
 # FreightQuote AI — Milestone 2
 
-**Infosys Springboard Internship 7.0 · Batch 4 · Milestone 2**
+**Infosys Springboard Internship 7.0 | Batch 4 | Milestone 2**
 
-FreightQuote AI is a freight operations demonstration application. The project combines a FastAPI backend, SQLite data store, browser-based interface, role-based access control (RBAC), and an AI Copilot that is intended to answer operational questions from database evidence.
+FreightQuote AI is an academic freight operations application developed as part of the Infosys Springboard Virtual Internship. It combines a FastAPI backend, SQLite database, browser-based frontend, JWT authentication, Role-Based Access Control (RBAC), administration features, and an AI-powered Copilot.
 
-## Team Members:
+The project was developed collaboratively by four team members. Each member worked on a separate module, and the individual Python files were integrated into a consolidated Jupyter Notebook for execution.
 
-   | Name | Work Done |
-   |---|---|
-   | `Chetana P Kulkarni` | Login and Security |
-   | `Ankit Kumar` | Roles and Admin Backend |
-   | `Venu Kumar P J` | Copilot |
-   | `Anshu Bauskar` | Frontend, Design and Database / Code Merge |
+## Team Members and Contributions
 
-> **Submission note:** This repository contains the Colab notebook used to create and run the application. Verify each feature in the running app and add only genuine screenshots/test results before final submission. This is an academic demo, not a production deployment.
+| Team Member | Module / Contribution |
+|---|---|
+| Chetana P Kulkarni | Authentication and Security |
+| Ankit Kumar | Roles and Admin Backend |
+| Venu Kumar P J | AI Copilot |
+| Anshu Bauskar | Frontend, UI Design, Database Integration and Code Integration |
 
-## Repository contents
+## Project Structure
 
 ```text
 Milestone2/
-├── README.md
-├── FreightQuote_Milestone2.ipynb
-└── screenshots/
-    └── README.md
+│
+├── FreightQuote_Milestone2.ipynb   # Main integrated notebook
+├── README.md                       # Project documentation
+│
+├── AI Copilot/
+│   ├── Instructions.txt
+│   ├── analyst.py
+│   ├── intent_router.py
+│   └── qa.py
+│
+├── Admin Backend/
+│   ├── db.py
+│   ├── milestone2_patch.py
+│   ├── rbac.py
+│   └── server.py
+│
+├── Admin Dashboard/
+│   ├── TASK_INSTRUCTIONS.txt
+│   ├── app.js
+│   ├── milestone2_patch.py
+│   ├── rbac.py
+│   ├── server.py
+│   └── style.css
+│
+├── Authentication/
+│   ├── README.md
+│   ├── config.py
+│   ├── hardening.py
+│   ├── localuser.py
+│   ├── mailer.py
+│   └── server.py
+│
+└── RBAC_CUSTOMER_ISOLATION/
+    ├── TASK_INSTRUCTIONS.txt
+    ├── db.py
+    └── milestone2_patch.py
 ```
 
-The notebook writes the application source files into `/content/app` when run in Google Colab. Runtime data (SQLite database, logs and generated files) is stored separately under `/content/app_data`.
+*Note: The tree shows the main files visible in the repository. Additional files may be present in individual folders.*
 
-## Technology stack
+## Important: How to Run the Project
 
-- Python
-- FastAPI and Uvicorn
-- SQLite
-- JWT-based authentication
-- Password hashing with bcrypt
-- Role-based access control (RBAC)
-- HTML, CSS and JavaScript frontend
-- Google Colab for the demonstration runtime
-- ngrok as an optional public-link fallback
+The repository contains individual Python source files contributed by different team members. These modules have been brought together into the main integrated notebook:
 
-The notebook installs the Python dependencies required by the project.
+**`FreightQuote_Milestone2.ipynb`**
 
-## Run in Google Colab
+For the integrated application demonstration, use this notebook as the main execution entry point. The notebook prepares the application files, installs the required dependencies, configures the runtime and starts the FastAPI server.
 
-1. Open `FreightQuote_Milestone2.ipynb` in Google Colab.
-2. Open the **Secrets** panel (key icon).
-3. Add the following secrets and enable notebook access:
+You do not need to execute each individual `.py` file separately when following the integrated notebook workflow.
 
-   | Secret name | Purpose |
-   |---|---|
-   | `JWT_SECRET` | Signs authentication tokens |
-   | `ADMIN_EMAIL_ID` | Initial administrator email |
-   | `ADMIN_PASSWORD` | Initial administrator password |
-   | `NGROK_AUTHTOKEN` | Optional fallback public URL |
-   | `EMAIL_ADDRESS` | Optional sender address for recovery emails |
-   | `EMAIL_PASSWORD` | Optional email app password |
+## Installation and Setup
 
-4. Do not paste secrets into notebook code or commit them to GitHub.
-5. Select **Runtime → Run all**.
-6. Wait for the server cell to print `FreightQuote AI is running`.
-7. Open the `Open the app` link printed by the notebook.
-8. Sign in with the administrator account configured through Colab Secrets.
+The application is designed to run in Google Colab.
 
-If startup fails, read the traceback in the server cell and correct the configuration before testing the app. The email secrets are optional if email-based password recovery is not being demonstrated. `NGROK_AUTHTOKEN` is only needed when the Colab proxy link is unavailable.
+### Step 1: Open the Notebook
 
-## Roles and access matrix
+1. Open `FreightQuote_Milestone2.ipynb` from this repository.
+2. Select **Open in Colab**, or download the notebook and upload it to Google Colab.
+3. Connect to a Colab runtime.
 
-The following is the target access matrix specified in the Milestone 2 mentor instructions. Confirm each permission against the running application and update this table if the implementation differs.
+### Step 2: Configure Secrets
 
-| Feature / page | Admin | Operations Manager | Freight Broker | Auditor | Customer |
+Open the Secrets panel in Google Colab and configure the required credentials.
+
+| Secret | Purpose |
+|---|---|
+| `JWT_SECRET` | JWT token signing |
+| `ADMIN_EMAIL_ID` | Initial administrator email |
+| `ADMIN_PASSWORD` | Initial administrator password |
+| `NGROK_AUTHTOKEN` | Optional public URL fallback |
+| `EMAIL_ADDRESS` | Optional email sender address |
+| `EMAIL_PASSWORD` | Optional email app password |
+
+Enable notebook access for the configured secrets.
+
+**Security:** Never hard-code passwords, API keys or tokens in notebook cells or commit them to GitHub.
+
+### Step 3: Run the Application
+
+1. Select **Runtime → Run all**.
+2. Allow the notebook to install dependencies and initialize the application.
+3. Wait for the server startup confirmation.
+4. Open the application using the URL generated by the notebook.
+5. Log in using the administrator credentials configured in Colab Secrets.
+
+If the server does not start, check the error displayed in the relevant notebook cell before proceeding.
+
+## Technology Stack
+
+- **Programming Language:** Python
+- **Backend:** FastAPI
+- **Server:** Uvicorn
+- **Database:** SQLite
+- **Authentication:** JWT
+- **Password Security:** bcrypt
+- **Authorization:** Role-Based Access Control (RBAC)
+- **Frontend:** HTML, CSS and JavaScript
+- **Development and Execution Environment:** Google Colab
+- **Public Access:** Colab proxy / optional ngrok
+
+## Main Application Modules
+
+### 1. Authentication and Security
+- User signup and login.
+- Password hashing and JWT-based authentication.
+- Forgot-password and password-reset functionality.
+- Account lockout after repeated failed login attempts.
+- User profile management.
+
+### 2. Role-Based Access Control and Admin Dashboard
+The application is designed around five user roles:
+
+- Admin
+- Operations Manager
+- Freight Broker
+- Auditor
+- Customer
+
+The Admin Dashboard supports user management, role updates, account status management and activity monitoring.
+
+### 3. AI Copilot
+The AI Copilot is designed to answer freight-operation questions using available application data and database evidence.
+
+Example questions:
+
+- Show me the top 5 carriers by reliability.
+- Which port has the highest congestion?
+- How many shipments are delayed?
+- Which quotes have a low margin?
+- Which shipments are on customs hold?
+- Which carrier is least reliable?
+
+### 4. Frontend and User Interface
+The browser-based interface provides navigation to the available application modules, login and profile pages, administration screens and AI Copilot.
+
+## Role-Based Access Matrix
+
+The following matrix represents the target permissions described in the Milestone 2 instructions.
+
+| Feature | Admin | Operations Manager | Freight Broker | Auditor | Customer |
 |---|:---:|:---:|:---:|:---:|:---:|
 | AI Copilot | ✓ | ✓ | ✓ | ✓ | ✓* |
 | Route AI | ✓ | ✓ | — | Read-only | — |
@@ -77,64 +167,46 @@ The following is the target access matrix specified in the Milestone 2 mentor in
 | Weather Risk | ✓ | ✓ | — | Read-only | — |
 | Margin | ✓ | — | ✓ | Read-only | — |
 | Customs | ✓ | ✓ | — | Read-only | — |
-| Admin dashboard / user management | ✓ | — | — | — | — |
+| Admin Dashboard | ✓ | — | — | — | — |
 | Profile | ✓ | ✓ | ✓ | ✓ | ✓ |
 
-- `✓` = allowed.
-- `Read-only` = view access; no changes or agent actions.
-- `—` = not allowed.
-- `*` Customers must be restricted to their own records and quotes.
+*Customer access must be restricted to the customer's own records. Verify the implemented permissions through testing before treating this matrix as a passed test.*
 
-The backend must enforce authorization as well as hiding unavailable menu items in the frontend. Restricted direct API/page requests should return HTTP `403`.
+## Security and Data Handling
 
-## Authentication and administration
+- Passwords should be stored as hashes, never as plain text.
+- Authentication tokens should be signed using a secret key.
+- Backend APIs should enforce permissions independently of frontend navigation.
+- Customer data should be isolated by customer ID.
+- Restricted requests should return HTTP 403 where applicable.
+- Database files, credentials, logs and runtime secrets must not be committed to the public repository.
 
-The Milestone 2 brief calls for:
+## Testing and Verification
 
-- Signup, login, forgot-password and reset-password endpoints.
-- Password hashing and JWT authentication.
-- A profile page with account information and password/username update.
-- Five roles: Admin, Operations Manager, Freight Broker, Auditor and Customer.
-- Admin user management: create, role update, lock/unlock and delete users.
-- Protection against deleting or locking the last active administrator.
-- Immediate rejection of locked users, including requests made with an earlier token.
-- An activity/audit trail for administrator actions.
+The application should be tested using separate accounts for the supported roles.
 
-Test these flows with dummy accounts before recording screenshots. Never show real passwords, password hashes, recovery secrets or personal user data.
+Recommended checks:
 
-## AI Copilot
+- Admin login and dashboard access.
+- User creation and role assignment.
+- Login and profile functionality.
+- Access restrictions for different roles.
+- Customer-specific data isolation.
+- AI Copilot responses to supported questions.
+- Error handling for invalid or unauthorized requests.
 
-The Copilot is designed to answer freight-operation questions using database-backed results rather than invented figures. The mentor brief requires at least 15 additional question patterns, role-aware data access, and display of the SQL/query evidence and row count where applicable.
+Add screenshots and test results only after verifying the corresponding functionality in the running application.
 
-Suggested prompts to validate in the application:
+## Important Submission Note
 
-1. Show me the top 5 carriers by reliability.
-2. Which port has the highest congestion?
-3. How many shipments are delayed?
-4. Which quotes have a low margin?
-5. Which shipments are on customs hold?
-6. Which carrier is least reliable?
-7. Show shipments arriving this week.
-8. Which customers have high-priority accounts?
+This repository maintains both the individual module source files and the consolidated notebook to preserve the team's contributions and provide a single execution workflow.
 
-Record the actual response and evidence for each prompt you test. A greeting such as `hello` should receive a polite response without fabricating operational statistics.
+For running the integrated application, use:
 
-## Screenshots
+**`FreightQuote_Milestone2.ipynb`**
 
-Add screenshots only after testing the corresponding feature. Use dummy accounts and blur personal information.
+The individual Python files are retained as module-level source code and development references. The notebook is the primary entry point for the integrated Google Colab demonstration.
 
+## Disclaimer
 
-## GitHub safety checklist
-
-Do **not** commit:
-
-- SQLite database files (`*.db`, `*.sqlite`, `*.sqlite3`) or SQLite WAL/SHM files.
-- `.env` files, passwords, API keys, JWT secrets, ngrok tokens or email app passwords.
-- Runtime logs (`*.log`), cache folders or Python bytecode.
-- Notebook outputs containing credentials, OTPs, personal data or temporary runtime links.
-
-Before pushing an updated notebook, clear outputs using **Edit → Clear all outputs** in Colab/Jupyter and inspect the notebook diff.
-
-## Current verification status
-
-This README documents the project structure and the mentor's required behavior. It does not claim that every checklist item has passed testing. Maintain a test record here after verifying each feature in the live Colab application, including the role used, expected result, actual result and screenshot filename.
+This project is developed for academic and internship demonstration purposes as part of Infosys Springboard Internship 7.0, Batch 4, Milestone 2. It is not intended for production deployment without further security, performance and reliability testing.
